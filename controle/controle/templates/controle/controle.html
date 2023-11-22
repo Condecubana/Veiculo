@@ -1,0 +1,39 @@
+
+
+{% block title %}  {% endblock %}
+
+
+  <h2>Detalhes da Movimentação</h2>
+
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Data Saída</th>
+        <th>Veículo</th>
+        <th>Motorista</th>
+        <th>Destino</th>
+        <th>Data Retorno</th>
+        <th>Horário Saída</th>
+        <th>Horário Retorno</th>
+        <th>Km Saída</th>
+        <th>Km Retorno</th>
+        <th>Km Percorrido</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{ controle.data_saida }}</td>
+        <td>{{ controle.veiculo }}</td>
+        <td>{{ controle.motorista }}</td>
+        <td>{{ controle.destino }}</td>
+        <td>{{ controle.data_retorno }}</td>
+        <td>{{ controle.hora_saida }}</td>
+        <td>{{ controle.hora_retorno }}</td>
+        <td>{{ controle.km_saida }}</td>
+        <td>{{ controle.km_retorno }}</td>
+        <td>{{ controle.km_percorrido }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+

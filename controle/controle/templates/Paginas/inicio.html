@@ -1,0 +1,70 @@
+
+{% extends "index.html" %}
+
+{% block titulo %} Motoristas {% endblock %}
+
+{% block contenido %}
+
+<div class="p-5 mb-4 bg-light rounded-3">
+    <div class="container-fluid py-5">
+      <h1 class="display-5 fw-bold">Bem-vindo ao Controle de Veículos </h1>
+     
+      
+    </div>
+  </div>
+  
+    <!--grade de movimentacao --> 
+  <table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Data Saída</th>
+            <th>Veículo</th>
+            <th>Motorista</th>
+            <th>Destino</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+         
+         {%for controle in controles%}
+        <tr>
+            <td>{{controle.data_saida}} </td>
+            <td>{{controle.veiculo}} </td>
+            <td>{{controle.motorista}} </td>
+            <td>{{controle.destino}} </td>
+            <td>
+                    <a href="{% url 'visualizar_movimentacao' controle.id %}" class="btn btn-info name = "" id="" btn-sm">Visualizar</a>
+                    <a href="{% url 'editar_movimentacao' controle.id %}" class="btn btn-info btn-sm">Editar</a>
+                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#excluirModal{{ movimentacao.id }}">
+                        Excluir
+                    </button>
+                </td>
+            </tr>
+            
+         
+            <!-- Modal de confirmação de exclusão -->
+            <div class="modal fade" id="excluirModal{{ movimentacao.id }}" tabindex="-1" role="dialog" aria-labelledby="excluirModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="excluirModalLabel">Confirmação de Exclusão</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            Tem certeza de que deseja excluir esta movimentação?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                            <a href="{% url 'excluir_movimentacao' controle.id %}" class="btn btn-danger">Confirmar Exclusão</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+       {%endfor %}
+    </tbody>
+</table>
+</div>
+
+{% endblock %}
