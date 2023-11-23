@@ -28,8 +28,8 @@ def visualizar_movimentacao(request, id):
     return render(request, 'controle/visualizar_movimentacao.html', {'controle': controle})
 
 def editar_movimentacao(request, id):
-   veiculo = Veiculo.objects.get(id=id)
-   formulario = VeiculoForm(request.POST or None, request.FILES or None, instance= veiculo)
+   controle = Controle.objects.get(id=id)
+   formulario = ControleForm(request.POST or None, request.FILES or None, instance= controle)
    if formulario.is_valid():
         formulario.save()
         return redirect('veiculos')
@@ -38,7 +38,7 @@ def editar_movimentacao(request, id):
     
 
 def excluir_movimentacao(request, id):
-    veiculo = get_object_or_404(veiculo, pk= id)
+    veiculo = Veiculo.objects.get(veiculo, id= id)
     if request.method == 'POST':
         veiculo.delete()
         return redirect(reverse('inicio'))
