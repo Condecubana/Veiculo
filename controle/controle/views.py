@@ -38,8 +38,7 @@ def editar_movimentacao(request, id):
     
 
 def excluir_movimentacao(request, id):
-    controle = Controle.objects.get(controle, id= id)
-    if request.method == 'POST':
-        controle.delete()
-        return redirect(reverse('inicio'))
-    return render(request, 'controle/excluir_movimentacao.html', {'controle': controle})
+    controle = Controle.objects.get(id= id)
+    controle.delete()
+    return redirect(reverse('inicio'))
+  
