@@ -7,6 +7,9 @@ from django.urls import reverse
 
 def inicio(request):
     controles = Controle.objects.all().order_by('-data_saida', '-hora_saida')
+    search = request.GET.get('search')
+    if search:
+        controles = Controle.objects.filter(data_saida__icontains=search)
     return render(request, 'paginas/inicio.html', {'controles': controles})
 
 def veiculos(request):
