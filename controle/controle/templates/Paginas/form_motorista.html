@@ -1,19 +1,38 @@
-<form enctype="multipart/form-data" method="post">
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cadastro de Motorista </title>
+</head>
+<body>
 
-<div class="mb-3">
-  <label for="" class="form-label">Nome</label>
-  <input type="text"
-    class="form-control" name="" id="" aria-describedby="helpId" placeholder="Nome">
+<h2>Cadastrar Motorista</h2>
+
+
+<form action="" method="post" enctype="multipart/form-data" >
   
-  <label for="" class="form-label">Telefone</label>
-  <input type="text"
-    class="form-control" name="" id="" aria-describedby="helpId" placeholder="Telefone">
-   
-  <label for="" class="form-label">CNH</label>
-  <input type="text"
-      class="form-control" name="" id="" aria-describedby="helpId" placeholder="Telefone">
-</div>
+  {% csrf_token %}
 
-        
-        <input name="" id="" class="btn btn-success" type="submit" value="Enviar cadastro">  
-</form>
+  {% for campo in formulario %}
+
+  <div class="mb-3">
+    <label for="" class="form-label">	{{ campo.label}}:</label>
+    
+    <input type="{{campo.field.widget.input }}"
+        class="form-control" 
+        name="{{ campo.name }}" 
+        id="" 
+        aria-describedby="helpId" 
+        placeholder="{{ campo.label}}"
+        value="{{ campo.value | default:'' }}" 
+      />
+    
+  </div>
+    <div class="col-12 help-text"> {{ campo.errors}}</div>
+    
+    <input name="" id="" class="btn btn-success" type="submit" value="Enviar cadastro">  
+
+  {% endfor %}
+   </form> 
+   
+   </body>
+   </html>

@@ -17,7 +17,10 @@ def veiculos(request):
     return render(request, 'controle/veiculos.html', {'formulario': formulario})
 
 def motoristas(request):
-    return render(request, 'controle/motoristas.html')
+    formulario = MotoristaForm(request.POST or None, request.FILES or None)
+    if formulario.is_valid():
+        formulario.save()
+    return render(request, 'controle/motoristas.html', {'formulario':formulario})
 
 def controle(request):
     controle = controle.objects.all()

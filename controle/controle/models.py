@@ -8,7 +8,7 @@ class Veiculo(models.Model):
     km_troca_oleo = models.IntegerField()
 
     def __str__(self):
-        return self.placa    
+        return f"{self.placa} - {self.marca}"  
 
 class Motorista(models.Model):
     nome = models.CharField(max_length=100)
